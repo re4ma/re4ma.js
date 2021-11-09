@@ -1,4 +1,4 @@
-# 🎈 re4ma - in-browser HTML-page generator
+# 🎈 re4ma - magic in-browser HTML-page generator
 
 ## Generates lightweight static HTML pages via simple external resource imports
 
@@ -14,6 +14,7 @@
 
 ### Symbiote.js friendly
 Use Symbiote-components for any dynamic page content.
+> https://symbiotejs.org/
 
 ### Usage:
 ```html
@@ -95,5 +96,3 @@ node <path>/builder.mjs
   ]
 }
 ```
-
-### Issues and PRs are welcome
