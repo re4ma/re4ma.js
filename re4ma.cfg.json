@@ -1,0 +1,10 @@
+{
+  "port": 3000,
+  "renderItems": [
+    {
+      "source": "test/",
+      "output": "dist/",
+      "minify": true
+    }
+  ]
+}

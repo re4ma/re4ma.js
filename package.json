@@ -1,0 +1,12 @@
+{
+  "name": "re4ma",
+  "version": "0.0.1",
+  "description": "Simple HTML page generator",
+  "type": "module",
+  "scripts": {
+    "ldep": "mkdir -p web_modules && curl https://raw.githubusercontent.com/markedjs/marked/7c09bb0a62d8abf5ceaaeccca5b9d41f705a2c9a/lib/marked.esm.js --output web_modules/marked.js",
+    "dev": "node dev.js"
+  },
+  "author": "alex.sova@pm.me",
+  "license": "MIT"
+}

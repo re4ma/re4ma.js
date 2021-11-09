@@ -1,0 +1,35 @@
+<script 
+  type="module"
+  src="../render/render.js" 
+  --title="re4ma test"
+  --re-template="./tpl/page-template.html">
+</script>
+
+<re-htm src="htm/page.htm" hidden>
+
+  <h3>Markdown render example:</h3>
+  <re-md src="md/test.md"></re-md>
+
+  <h3>Optimized image example:</h3>
+  <re-img 
+    src="img/test.jpg"
+    lazy
+    alt="My photo"
+    w="300px">
+  </re-img>
+
+  <h3>Data based rendering (array):</h3>
+  <re-peat
+    data-src="json/data-arr.json"
+    template-src="htm/repeat-tpl.htm"></re-peat>
+
+  <h3>Data based rendering (object):</h3>
+  <re-peat
+    data-src="json/data-obj.json"
+    template-src="htm/repeat-tpl-2.htm"></re-peat>
+
+  <h3>Code example:</h3>
+  <re-code src="../render/ReComponent.js"></re-code>
+
+</re-htm>
+
