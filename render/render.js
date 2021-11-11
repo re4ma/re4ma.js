@@ -6,8 +6,11 @@ import {ReCss} from './re-css.js';
 import {ReImg} from './re-img.js';
 import {ReCode} from './re-code.js';
 
+class ReSvg extends ReHtm {}
+
 function regAll() {
   ReHtm.reg('re-htm');
+  ReSvg.reg('re-svg');
   RePeat.reg('re-peat');
   ReJs.reg('re-js');
   ReMd.reg('re-md');
