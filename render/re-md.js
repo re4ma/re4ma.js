@@ -1,6 +1,6 @@
 import { ReComponent } from './ReComponent.js';
 import { marked } from '../web_modules/marked.js';
-import { clrz } from './clrz.js';
+import { clrz } from '../utils/clrz.js';
  
 export class ReMd extends ReComponent {
 

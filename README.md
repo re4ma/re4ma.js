@@ -77,22 +77,4 @@ Remove cetrain element after render:
 ```html
 <my-component re-move><my-component>
 ```
-###
 
-### Build Site
-```
-node <path>/builder.mjs
-```
-### Configuration (re4ma.cfg.json)
-```json
-{
-  "port": 3000,
-  "renderItems": [
-    {
-      "source": "test",
-      "output": "dist",
-      "minify": true
-    }
-  ]
-}
-```

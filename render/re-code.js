@@ -1,5 +1,5 @@
 import { ReComponent } from './ReComponent.js';
-import { clrz } from './clrz.js';
+import { clrz } from '../utils/clrz.js';
 
 export class ReCode extends ReComponent {
 
