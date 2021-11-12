@@ -42,7 +42,6 @@ if (script) {
     regAll();
     window.requestAnimationFrame(() => {
       window.addEventListener('keydown', (e) => {
-        console.log(e)
         if (e.key === 'r' && e.ctrlKey) {
           e.preventDefault();
           window.fetch('./', {
@@ -50,7 +49,7 @@ if (script) {
             body: JSON.stringify({
               type: 'save',
               path: document.location.pathname,
-              html: document.documentElement.outerHTML,
+              html: new XMLSerializer().serializeToString(document),
             }),
           });
         }
