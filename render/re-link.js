@@ -8,6 +8,7 @@ export class ReLink extends ReComponent {
       for (let attr of [...this.attributes]) {
         a.setAttribute(attr.name, attr.value);
       }
+      a.innerHTML = this.innerHTML;
       this.parentNode.insertBefore(a, this);
       this.remove();
       window.fetch('./', {
