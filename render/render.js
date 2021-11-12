@@ -42,6 +42,7 @@ if (script) {
     regAll();
     window.requestAnimationFrame(() => {
       window.addEventListener('keydown', (e) => {
+        console.log(e)
         if (e.key === 's' && e.ctrlKey && e.shiftKey) {
           e.preventDefault();
           window.fetch('./', {
