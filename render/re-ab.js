@@ -9,16 +9,19 @@ const HTML = /*html*/ `
 </div>
 `;
 
-const SCRIPT_HTML = /*html*/ `
-<script>
+function releaseAB() {
   let currentVariant = Math.random() > 0.5 ? 'A' : 'B';
   [...document.querySelectorAll('[re-variant]')].filter((el) => {
     return el.getAttribute('re-variant') === currentVariant;
   }).forEach((el) => {
     el.removeAttribute('hidden');
+    // @ts-ignore
     el.style.display = 'contents';
   });
-</script>
+}
+
+const SCRIPT_HTML = /*html*/ `
+<script>${releaseAB.toString}</script>
 `;
 
 let scriptAdded = false;
@@ -34,5 +37,6 @@ export class ReAb extends ReComponent {
     let html = HTML.split('{{SRC-A}}').join(this.getAttribute('src-a'));
     html = html.split('{{SRC-B}}').join(this.getAttribute('src-b'));
     this.outerHTML = html;
+    releaseAB();
   }
 }
