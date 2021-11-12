@@ -40,6 +40,21 @@ if (script) {
     newDoc.write(tplTxt);
     newDoc.close();
     regAll();
+    window.requestAnimationFrame(() => {
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 's' && e.ctrlKey && e.shiftKey) {
+          e.preventDefault();
+          window.fetch('./', {
+            method: 'POST',
+            body: JSON.stringify({
+              type: 'save',
+              path: document.location.pathname,
+              html: document.documentElement.outerHTML,
+            }),
+          });
+        }
+      });
+    });
   });
 } else {
   regAll();
