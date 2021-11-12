@@ -11,17 +11,17 @@ const HTML = /*html*/ `
 
 function releaseAB() {
   let currentVariant = Math.random() > 0.5 ? 'A' : 'B';
-  [...document.querySelectorAll('[re-variant]')].filter((el) => {
-    return el.getAttribute('re-variant') === currentVariant;
-  }).forEach((el) => {
-    el.removeAttribute('hidden');
-    // @ts-ignore
-    el.style.display = 'contents';
+  [...document.querySelectorAll('[re-variant]')].forEach((el) => {
+    if (el.getAttribute('re-variant') === currentVariant) {
+      el.removeAttribute('hidden');
+      // @ts-ignore
+      el.style.display = 'contents';
+    }
   });
 }
 
 const SCRIPT_HTML = /*html*/ `
-<script>${releaseAB.toString()}</script>
+<script type="module">${releaseAB.toString()};releaseAB();</script>
 `;
 
 let scriptAdded = false;
