@@ -21,7 +21,7 @@ function releaseAB() {
 }
 
 const SCRIPT_HTML = /*html*/ `
-<script>${releaseAB.toString}</script>
+<script>${releaseAB.toString()}</script>
 `;
 
 let scriptAdded = false;
