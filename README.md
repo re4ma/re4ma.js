@@ -34,7 +34,10 @@ Use Symbiote-components for any dynamic page content.
 <re-css src="css/styles.css"><re-css>
 
 <!-- Adaptive images: -->
-<re-img src="img/picture.jpg"><re-img>
+<re-img 
+  loader="scripts/my-loader.js"
+  src="img/picture.jpg">
+<re-img>
 
 <!-- Rendering from external data endpoint: -->
 <re-peat 
