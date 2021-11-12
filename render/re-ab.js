@@ -2,11 +2,11 @@ import { ReComponent } from './ReComponent.js';
 
 const HTML = /*html*/ `
 <div re-variant="A" hidden>
-  <re-html src="{{SRC-A}}"></re-htm>
-<div>
+  <re-htm src="{{SRC-A}}"></re-htm>
+</div>
 <div re-variant="B" hidden>
-  <re-html src="{{SRC-B}}"></re-htm>
-<div>
+  <re-htm src="{{SRC-B}}"></re-htm>
+</div>
 `;
 
 const SCRIPT_HTML = /*html*/ `
