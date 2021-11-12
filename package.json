@@ -4,8 +4,7 @@
   "description": "Simple in-browser HTML page generator",
   "type": "module",
   "scripts": {
-    "wdep": "mkdir -p web_modules && curl https://raw.githubusercontent.com/markedjs/marked/7c09bb0a62d8abf5ceaaeccca5b9d41f705a2c9a/lib/marked.esm.js --output web_modules/marked.js",
-    "dev": "node dev.js"
+    "wdep": "mkdir -p web_modules && curl https://raw.githubusercontent.com/markedjs/marked/7c09bb0a62d8abf5ceaaeccca5b9d41f705a2c9a/lib/marked.esm.js --output web_modules/marked.js"
   },
   "author": "alex.sova@pm.me",
   "license": "MIT"
