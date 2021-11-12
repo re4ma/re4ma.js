@@ -49,7 +49,7 @@ if (script) {
             body: JSON.stringify({
               type: 'save',
               path: document.location.pathname,
-              html: new XMLSerializer().serializeToString(document),
+              html: '<!DOCTYPE html>\n' + document.documentElement.outerHTML,
             }),
           });
         }
