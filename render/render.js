@@ -5,6 +5,7 @@ import {ReMd} from './re-md.js';
 import {ReCss} from './re-css.js';
 import {ReImg} from './re-img.js';
 import {ReCode} from './re-code.js';
+import {ReLink} from './re-link.js';
 
 class ReSvg extends ReHtm {}
 
@@ -17,6 +18,7 @@ function regAll() {
   ReCss.reg('re-css');
   ReImg.reg('re-img');
   ReCode.reg('re-code');
+  ReLink.reg('re-link');
 };
 
 const TPL_ATTR = 're-tpl';
