@@ -26,7 +26,9 @@ let scriptAdded = false;
 export class ReAb extends ReComponent {
   connectedCallback() {
     if (!scriptAdded) {
-      document.body.innerHTML += SCRIPT_HTML;
+      let tpl = document.createElement('template');
+      tpl.innerHTML = SCRIPT_HTML;
+      document.body.appendChild(tpl.content.cloneNode(true));
       scriptAdded = true;
     }
     let html = HTML.split('{{SRC-A}}').join(this.getAttribute('src-a'));
