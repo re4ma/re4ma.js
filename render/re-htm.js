@@ -5,7 +5,16 @@ const ATTR_PRFX = '--';
 export class ReHtm extends ReComponent {
 
   applySrc() {
+    /** @type {String} */
     let html = this.srcText;
+    let from = this.getAttribute('from');
+    if (from) {
+      html = html.split(from)[1];
+    }
+    let to = this.getAttribute('to');
+    if (to) {
+      html = html.split(to)[0];
+    }
     [...this.attributes].forEach((attr) => {
       if (attr.name.startsWith(ATTR_PRFX)) {
         let name = attr.name.replace(ATTR_PRFX, '');
