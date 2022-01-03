@@ -1,6 +1,6 @@
 {
   "name": "@re4ma/re4ma",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Simple in-browser HTML page generator",
   "type": "module",
   "files": [
