@@ -9,7 +9,7 @@ export class ReComponent extends HTMLElement {
     INST_SET.add(this);
   }
 
-  applySrc() {}
+  applySrc() { }
 
   set src(srcValue) {
     if (!srcValue) {
@@ -25,6 +25,57 @@ export class ReComponent extends HTMLElement {
         this.applySrc();
       });
     }
+  }
+
+  /**
+   * @param {String} propName
+   * @param {Boolean} [silentCheck]
+   */
+  getCssData(propName, silentCheck = false) {
+    if (!this.__cssDataCache) {
+      this.__cssDataCache = Object.create(null);
+    }
+    if (!Object.keys(this.__cssDataCache).includes(propName)) {
+      if (!this.__computedStyle) {
+        this.__computedStyle = window.getComputedStyle(this);
+      }
+      let val = this.__computedStyle.getPropertyValue(propName).trim();
+      // Firefox doesn't transform string values into JSON format:
+      if (val.startsWith(`'`) && val.endsWith(`'`)) {
+        val = val.replace(/\'/g, '"');
+      }
+      try {
+        this.__cssDataCache[propName] = JSON.parse(val);
+      } catch (e) {
+        !silentCheck && console.warn(`CSS Data error: ${propName}`);
+        this.__cssDataCache[propName] = null;
+      }
+    }
+    return this.__cssDataCache[propName];
+  }
+
+  dropCssDataCache() {
+    this.__cssDataCache = null;
+    this.__computedStyle = null;
+  }
+
+  /**
+   * 
+   * @param {String} src 
+   */
+  async applyLoader(src) {
+    let loaderSrc = this.getAttribute('loader');
+    if (!loaderSrc) {
+      console.log(`Loader error: ${loaderSrc}`);
+      return;
+    }
+    let loaderText = await (await (window.fetch(loaderSrc))).text();
+    let file = new File([loaderText], 'loader', {
+      type: 'application/javascript',
+    });
+    let url = URL.createObjectURL(file);
+    let mdl = await import(url);
+    mdl.default(src, this);
   }
 
   disconnectedCallback() {
@@ -49,7 +100,7 @@ export class ReComponent extends HTMLElement {
   static reg(tagName) {
     window.customElements.define(tagName, this);
   }
-  
+
 }
 
 ReComponent.observedAttributes = ['src'];

@@ -23,16 +23,13 @@ export class ReImg extends ReComponent {
     if (this.hasAttribute('alt')) {
       this.img.alt = this.getAttribute('alt');
     }
-    let loaderSrc = this.getAttribute('loader');
-    if (loaderSrc) {
-      import(loaderSrc).then((ldrFn) => {
-        ldrFn(srcVal, this.img);
-      });
+    if (this.hasAttribute('loader')) {
+      this.applyLoader(srcVal);
     } else {
       this.img.src = srcVal;
+      this.parentNode.insertBefore(this.img, this);
+      this.remove();
     }
-    this.parentNode.insertBefore(this.img, this);
-    this.remove();
   }
 }
 

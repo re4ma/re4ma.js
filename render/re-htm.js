@@ -21,6 +21,19 @@ export class ReHtm extends ReComponent {
         html = html.split(`{{${name}}}`).join(attr.value);
       }
     });
+    if (html.includes('{{') && html.includes('}}')) {
+      let partsArr = html.split('{{');
+      partsArr.forEach((part) => {
+        if (!part.includes('}}')) {
+          return;
+        }
+        let placeholder = part.split('}}')[0];
+        let value = this.getCssData(`--${placeholder}`);
+        if (value) {
+          html = html.split(`{{${placeholder}}}`).join(value);
+        }
+      });
+    }
     let tpl = document.createElement('template');
     tpl.innerHTML = html;
     let fr = document.createDocumentFragment();

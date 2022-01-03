@@ -5,13 +5,6 @@ export class ReLoad extends ReComponent {
     if (!srcVal) {
       return;
     }
-    let loaderSrc = this.getAttribute('loader');
-    if (loaderSrc) {
-      import(loaderSrc).then((ldrFn) => {
-        ldrFn(srcVal, this);
-      });
-    } else {
-      console.log('re-load: loader function is unset');
-    }
+    this.applyLoader(srcVal);
   }
 }
