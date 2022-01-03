@@ -1,10 +1,11 @@
 {
   "name": "@re4ma/re4ma",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Simple in-browser HTML page generator",
   "type": "module",
   "files": [
     "build/re4ma.js",
+    "build/mkd.esm.min.js",
     "README.md",
     "LICENSE"
   ],
