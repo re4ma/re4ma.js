@@ -1,6 +1,6 @@
-# 🎈 re4ma - magic in-browser HTML-page generator
+# Re4ma - magic in-browser HTML-page generator
 
-## Generates lightweight static HTML pages via simple external resource imports
+## Implements simple but powerful module system for HTML documents
 
 ### Import types:
 
@@ -9,14 +9,29 @@
 * Code snippets with a syntax highlight
 * JavaScript (as imported module dependency)
 * CSS (external files connection + inline)
-* Adaptive images (Powered by Uploadcare)
+* Images and image processing
+* Custom contents processing
 * JSON-data applied to HTML template
 
 ### Symbiote.js friendly
 Use Symbiote-components for any dynamic page content.
 > https://symbiotejs.org/
 
-### Usage:
+## Usage:
+
+### Connect re4ma script from CDN:
+```html
+<script
+  src="https://unpkg.com/@re4ma/re4ma@latest/build/re4ma.js">
+</script>
+```
+
+### NPM installation:
+
+`npm i @re4ma/re4ma`
+
+### Then you can use these simple HTML-tags:
+
 ```html
 <!-- Import any external HTML chunk or component: -->
 <re-htm src="htm/page.htm"><re-htm>
@@ -33,7 +48,13 @@ Use Symbiote-components for any dynamic page content.
 <!-- Import styles: -->
 <re-css src="css/styles.css"><re-css>
 
-<!-- Adaptive images: -->
+<!-- Import with custom source handler: -->
+<re-load
+  loader="scripts/txt-loader.js"
+  src="some_content.txt">
+<re-load>
+
+<!-- Image: -->
 <re-img 
   loader="scripts/my-loader.js"
   src="img/picture.jpg">
@@ -45,7 +66,10 @@ Use Symbiote-components for any dynamic page content.
   data-src="data/users.json">
 <re-peat>
 ```
-Use *.html file names for entry points and *.htm for chunks
+
+### HTML-file extension convention: 
+
+Use *.html file names for HTML-pages and *.htm for chunks and modules
 
 ### Named Slots:
 
