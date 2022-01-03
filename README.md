@@ -1,17 +1,18 @@
 # Re4ma - magic in-browser HTML-page generator
 
-## Implements simple but powerful module system for HTML documents
+## Implements very simple but powerful module system for HTML documents building
 
 ### Import types:
 
-* HTML: modules, chunks, templates whith a data placeholders and `<slot>` based composition support
+* HTML (*.html, *.htm): modules, chunks, templates whith a data placeholders and `<slot>` based composition support
 * Markdown (*.md)
 * Code snippets with a syntax highlight
 * JavaScript (as imported module dependency)
 * CSS (external files connection + inline)
 * Images and image processing
-* Custom contents processing
+* Custom contents import and processing
 * JSON-data applied to HTML template
+* etc...
 
 ### Symbiote.js friendly
 Use Symbiote-components for any dynamic page content.
