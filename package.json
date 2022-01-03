@@ -1,11 +1,35 @@
 {
-  "name": "re4ma",
-  "version": "0.0.1",
+  "name": "@re4ma/re4ma",
+  "version": "0.1.0",
   "description": "Simple in-browser HTML page generator",
   "type": "module",
+  "files": [
+    "build/re4ma.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
-    "wdep": "mkdir -p web_modules && curl https://raw.githubusercontent.com/markedjs/marked/7c09bb0a62d8abf5ceaaeccca5b9d41f705a2c9a/lib/marked.esm.js --output web_modules/marked.js"
+    "dir": "mkdir -p ext_modules",
+    "wdep": "curl -L https://unpkg.com/marked@latest/lib/marked.esm.js --output ext_modules/marked.js",
+    "setup": "npm run dir && npm run wdep",
+    "build": "node esbuild.js"
   },
   "author": "alex.sova@pm.me",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "esbuild": "^0.14.10"
+  },
+  "bugs": {
+    "url": "https://github.com/re4ma/re4ma.js/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/re4ma/re4ma.js.git"
+  },
+  "keywords": [
+    "re4ma, web components, custom elements, shadow dom, ui framework, static site generator"
+  ]
 }

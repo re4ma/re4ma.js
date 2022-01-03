@@ -1,12 +1,13 @@
-import {ReHtm} from './re-htm.js';
-import {RePeat} from './re-peat.js';
-import {ReJs} from './re-js.js';
-import {ReMd} from './re-md.js';
-import {ReCss} from './re-css.js';
-import {ReImg} from './re-img.js';
-import {ReCode} from './re-code.js';
-import {ReLink} from './re-link.js';
-import {ReAb} from './re-ab.js';
+import { ReHtm} from './re-htm.js';
+import { RePeat} from './re-peat.js';
+import { ReJs} from './re-js.js';
+import { ReMd} from './re-md.js';
+import { ReCss} from './re-css.js';
+import { ReLoad } from './re-load.js';
+import { ReImg } from './re-img.js';
+import { ReCode } from './re-code.js';
+import { ReLink } from './re-link.js';
+import { ReAb } from './re-ab.js';
 
 class ReSvg extends ReHtm {}
 
@@ -18,6 +19,7 @@ function regAll() {
   ReMd.reg('re-md');
   ReCss.reg('re-css');
   ReImg.reg('re-img');
+  ReLoad.reg('re-load');
   ReCode.reg('re-code');
   ReLink.reg('re-link');
   ReAb.reg('re-ab');
