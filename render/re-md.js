@@ -1,11 +1,12 @@
 import { ReComponent } from './ReComponent.js';
-import { marked } from '../ext_modules/marked.js';
 import { clrz } from '../utils/clrz.js';
  
 export class ReMd extends ReComponent {
 
-  applySrc() {
-    let html = marked(this.srcText);
+  async applySrc() {
+    // @ts-ignore
+    let mkdMdl = await import('https://unpkg.com/@re4ma/re4ma@latest/build/mkd.esm.min.js');
+    let html = mkdMdl.marked(this.srcText);
     let fr = document.createDocumentFragment();
     let wrapper = document.createElement('div');
     wrapper.innerHTML = html;

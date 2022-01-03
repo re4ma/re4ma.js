@@ -5,6 +5,10 @@ const buildSequence = [
     in: './render/render.js',
     out: './build/re4ma.js',
   },
+  {
+    in: './ext_modules/marked',
+    out: './build/mkd.esm.min.js',
+  },
 ];
 
 function build(buildItem) {
