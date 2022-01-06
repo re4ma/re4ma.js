@@ -50,7 +50,7 @@ export class RePeat extends ReComponent {
       console.log('Wrong data format at ' + this.dataSrc);
     }
     if (this.parentNode) {
-      this.outerHTML = this._html;
+      this.outerHTML = this.processHtmlPlaceholders(this._html);
     }
   }
 

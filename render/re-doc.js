@@ -10,6 +10,8 @@ export class ReDoc extends ReComponent {
       let init = async () => {
         let tplTxt = await (await window.fetch(this.tplSrc)).text();
         let docTxt = await (await window.fetch(this.docSrc)).text();
+        tplTxt = this.processHtmlPlaceholders(tplTxt);
+        docTxt = this.processHtmlPlaceholders(docTxt);
         let docFile = new File([tplTxt.replace('{{CONTENT}}', docTxt)], 'test.html', {
           type: 'text/html',
         });

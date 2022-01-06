@@ -1,6 +1,7 @@
 const CACHE = Object.create(null);
 const INST_SET = new Set();
 const IMPORTS_READY = 'all-imports-ready';
+const ATTR_PRFX = '--';
 
 export class ReComponent extends HTMLElement {
 
@@ -76,6 +77,60 @@ export class ReComponent extends HTMLElement {
     let url = URL.createObjectURL(file);
     let mdl = await import(url);
     mdl.default(src, this);
+  }
+
+  /**
+   * 
+   * @param {String} html 
+   * @returns {String}
+   */
+  processHtmlPlaceholders(html) {
+    [...this.attributes].forEach((attr) => {
+      if (attr.name.startsWith(ATTR_PRFX)) {
+        let name = attr.name.replace(ATTR_PRFX, '');
+        html = html.split(`{{${name}}}`).join(attr.value);
+      }
+    });
+    if (html.includes('{{') && html.includes('}}')) {
+      let partsArr = html.split('{{');
+      partsArr.forEach((part) => {
+        if (!part.includes('}}')) {
+          return;
+        }
+        let placeholder = part.split('}}')[0];
+        let value = this.getCssData(`--${placeholder}`);
+        if (value) {
+          html = html.split(`{{${placeholder}}}`).join(value);
+        }
+      });
+    }
+    return html;
+  }
+
+  /**
+   * 
+   * @param {DocumentFragment} fr 
+   */
+  processSlots(fr) {
+    let defaultSlot = fr.querySelector(`slot:not([name])`);
+    let slot;
+    [...this.children].forEach((el) => {
+      let slotName = el.getAttribute('slot');
+      if (slotName) {
+        slot = fr.querySelector(`slot[name="${slotName}"]`);
+      }
+      if (!slot) {
+        slot = defaultSlot || null;
+      }
+      if (slot) {
+        slot.parentElement?.insertBefore(el, slot);
+      } else {
+        el.remove();
+      }
+    });
+    [...fr.querySelectorAll('slot')].forEach((slot) => {
+      slot.remove();
+    });
   }
 
   disconnectedCallback() {
